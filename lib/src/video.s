@@ -1,3 +1,4 @@
+
 video_write
             ; Video Write (string)
             ; String will be written from a Pointer, 
@@ -201,3 +202,6 @@ video_reset
 
 
             rts
+
+video_load_font
+

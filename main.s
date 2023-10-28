@@ -1,10 +1,14 @@
-            .include "lib/variables.s"
+            .include "lib/variables.s"      
             
-            .org $c000              ; $c000 for 16k ROM
-
-            ; libraries
+            
+            .org $c000                          ; $c000 for 16k ROM
             .include "lib/kernel.s"
 
+
+            .org $f700
+charset     .incbin "assets/UTF-8.bin"
+
+            .org $ff00
 reset       sei
             cld
 
@@ -55,22 +59,23 @@ irq_jump    jmp (irq_vector)
             .addr irq_jump
 
 ; hardware registers
-vidx = $be00
-vidy = $be01
-vidm = $be02
-vidd = $be03
 
-porta = $bf80
-portb = $bf81
-ddrb = $bf82
-ddra = $bf83
-t1cl = $bf84
-t1ch = $bf85
-acr = $bf8b
-ifr = $bf8d
-ier = $bf8e
+vidx                    = $be00
+vidy                    = $be01
+vidm                    = $be02
+vidd                    = $be03
 
-keyboard_port = $bd00
-system_register = $bc00
+porta                   = $bf80
+portb                   = $bf81
+ddrb                    = $bf82
+ddra                    = $bf83
+t1cl                    = $bf84
+t1ch                    = $bf85
+acr                     = $bf8b
+ifr                     = $bf8d
+ier                     = $bf8e
+
+keyboard_port           = $bd00
+system_register         = $bc00
 
             .end
