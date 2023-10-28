@@ -104,7 +104,7 @@ video_read_char
             ; Input:  (none)
 
             ; Output:
-            ; A => Pressed Key as Char
+            ; A <= Pressed Key as Char
 
 
             rts
@@ -129,8 +129,8 @@ video_get_cursor
             ; Input:  (none)
             
             ; Output:
-            ; X => X Coordinate
-            ; Y => Y Coordinate
+            ; X <= X Coordinate
+            ; Y <= Y Coordinate
 
 
             rts
@@ -169,14 +169,15 @@ video_scroll
             ;                       1 = Scroll Entire Video Buffer (Y 0 - 255) (32k)
 
 
-            ; I.E => 0x03  => Scrolls RIGHT & Up and Disposes "scrolled away" content. Fills gaps with empty cells
+            ; I.E => 0x03 (0b00001011) => Scrolls Entire Videobuffer Right & Up and 
+            ;           Disposes "scrolled away" content. Fills gaps with empty cells
 
 
             rts
 
 video_clear
             ; Video Clear
-            ; Clears the Screen, to
+            ; Clears the Screen blank, with the normal Color
 
 
             rts

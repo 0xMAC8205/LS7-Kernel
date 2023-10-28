@@ -32,7 +32,7 @@ vram_read
             ; Y => Y Coordinate
 
             ; Output:
-            ; A => Data
+            ; A <= Data
 
 
 vram_dump
