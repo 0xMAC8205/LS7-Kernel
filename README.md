@@ -10,6 +10,6 @@ yourself.
 
 The Compile and Upload scripts are contained in the Makefile
 
-* Dependencies:
+# Dependencies:
 * Compiler: vasm6502 (may switch to cc65)
 * Uploader: minipro
