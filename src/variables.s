@@ -44,3 +44,24 @@ color                   = $2fe      ; 8 bit                 Fore & Background Co
 typelength              = $2ff      ; 8 bit                 Length of typebuffer
 typebuffer              = $300      ; 256 byte              256 bit, All Purpose Char Buffer
 
+
+
+; Hardware Registers
+
+vidx                    = $be00     ; 8 bit                 Video X Register
+vidy                    = $be01     ; 8 bit                 Video Y Register
+vidm                    = $be02     ; 8 bit                 Video Modifier Register
+vidd                    = $be03     ; 8 bit                 Video Data Register
+
+porta                   = $bf80     ; 8 bit                 VIA Registers
+portb                   = $bf81     ; 8 bit                 ...
+ddrb                    = $bf82     ; 8 bit
+ddra                    = $bf83     ; 8 bit
+t1cl                    = $bf84     ; 8 bit
+t1ch                    = $bf85     ; 8 bit
+acr                     = $bf8b     ; 8 bit
+ifr                     = $bf8d     ; 8 bit
+ier                     = $bf8e     ; 8 bit
+
+keyboard_port           = $bd00     ; 8 bit                 Keyboard Scan-Row Input
+system_register         = $bc00     ; 8 bit                 System Register
