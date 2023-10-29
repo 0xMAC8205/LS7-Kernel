@@ -42,5 +42,5 @@ soft_system_register    = $21d      ; 8 bit     (internal)
 color                   = $2fe      ; 8 bit                 Fore & Background Color
 
 typelength              = $2ff      ; 8 bit                 Length of typebuffer
-typebuffer              = $300      ; 256 bit               256 bit, All Purpose Char Buffer
+typebuffer              = $300      ; 256 byte              256 bit, All Purpose Char Buffer
 

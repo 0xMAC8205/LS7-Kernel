@@ -1,0 +1,68 @@
+Kernel Routines Grouped
+(everything NOT starting with "+-", are "wants")
+
+
+
+Char.s
+
+
+Event_Handler.s
+
+
+Hardware.s
+  |
+  +- vram_write
+  +- vram_write_color
+  +- vram_read
+  +- vram_dump
+
+Int.s
+
+
+Irq.s
+  |
+  +- irq
+
+Keyboard.s
+
+
+Memory_Manager.s
+
+  Software Stack:
+  (for A, X and Y)
+  push
+  pop
+
+
+  Maybe also: External Fragmantation
+  or: Variable houskeeping in a List of pointers
+
+String.s
+
+  to lower
+  to upper
+  count
+  flip
+  contains
+  equals
+  trim
+
+Video.s
+  |
+  +- video_write
+  +- video_write_static
+  +- video_writeline
+  +- video_writeline_static
+  +- video_set_color
+  +- video_set_foreground
+  +- video_set_background
+  +- video_read_line
+  +- video_read_char
+  +- video_set_cursor
+  +- video_get_cursor
+  +- video_return
+  +- video_scroll
+  +- video_clear
+  +- video_reset_color
+  +- video_reset
+  +- video_load_font

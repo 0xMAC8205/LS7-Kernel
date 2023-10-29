@@ -9,9 +9,12 @@ vram_write
             ; Y => Y Coordinate
 
             ; Output:  (none)
+
+
+            rts
             
 
-;vram_write_color
+vram_write_color
             ; VRAM Write Color
             ; Writes A to the given Coordinate, but adds 0x40 to X
 
@@ -22,6 +25,8 @@ vram_write
             
             ; Output:  (none)
 
+
+            rts
 
 vram_read
             ; VRAM Read
@@ -34,6 +39,8 @@ vram_read
             ; Output:
             ; A <= Data
 
+
+            rts
 
 vram_dump
             ; VRAM Dump
@@ -49,3 +56,6 @@ vram_dump
             ; K4 => HIGH Memory Pointer
 
             ; Output: (none) 
+
+
+            rts

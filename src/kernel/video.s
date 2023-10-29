@@ -168,7 +168,6 @@ video_scroll
             ;                +----  0 = Scroll Text Video Buffer   (Y 0 - 31)  (4k)
             ;                       1 = Scroll Entire Video Buffer (Y 0 - 255) (32k)
 
-
             ; I.E => 0x03 (0b00001011) => Scrolls Entire Videobuffer Right & Up and 
             ;           Disposes "scrolled away" content. Fills gaps with empty cells
 
@@ -205,4 +204,14 @@ video_reset
             rts
 
 video_load_font
+            ; Video Load Font
+            ; Loads a 2k BitMap font from a Pointer to VRAM
 
+            ; Input:
+            ; X => LOW Memory Pointer
+            ; Y => HIGH Memory Pointer
+
+            ; Output: (none)
+
+
+            rts

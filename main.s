@@ -1,8 +1,8 @@
-            .include "lib/variables.s"      
+            .include "src/variables.s"      
             
             
             .org $c000                          ; $c000 for 16k ROM
-            .include "lib/kernel.s"
+            .include "src/kernel.s"
 
 
             .org $f700
