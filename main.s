@@ -6,10 +6,10 @@
 
 
             .org $f700
-charset     .incbin "assets/UTF-8.bin"
+charset:    .incbin "assets/UTF-8.bin"
 
             .org $ff00
-reset       sei
+reset:      sei
             cld
 
             lda #<irq
@@ -48,9 +48,9 @@ reset       sei
             jsr kernel_init
 
 
-loop        jmp loop
+loop:       jmp loop
 
-irq_jump    jmp (irq_vector)
+irq_jump:   jmp (irq_vector)
 
 
             .org $fffa

@@ -8,10 +8,10 @@ z1                      = $1        ; 8 bit
 irq_a                   = $200      ; 8 bit     (internal)  IRQ Variable Save
 irq_x                   = $201      ; 8 bit     (internal)
 irq_y                   = $202      ; 8 bit     (internal)
-irq_vector              = $203      ; 16 bit                IRQ 16 bit Jump Vector 
+irq_vector              = $203      ; 16 bit    (internal)  IRQ 16 bit Jump Vector 
 
-k0                      = $205      ; 8 bit                 General Purpose Registers      
-k1                      = $206      ; 8 bit                 ...
+k0                      = $205      ; 8 bit                 General Purpose Kernel Registers,
+k1                      = $206      ; 8 bit                 usually used as Carry for Sub-Routines
 k2                      = $207      ; 8 bit
 k3                      = $208      ; 8 bit
 k4                      = $209      ; 8 bit
@@ -38,12 +38,14 @@ cursor_delay_count      = $21b      ; 8 bit     (internal)
 cursor_delay_switch     = $21c      ; 8 bit     (internal)
 
 soft_system_register    = $21d      ; 8 bit     (internal)
+color                   = $21e      ; 8 bit                 Fore & Background Color
+typelength              = $21f      ; 8 bit                 Length of typebuffer
 
-color                   = $2fe      ; 8 bit                 Fore & Background Color
+kernel_stack            = $280      ; 256 bytes             256 byte, Kernel Stack, used for offloading Registers
 
-typelength              = $2ff      ; 8 bit                 Length of typebuffer
-typebuffer              = $300      ; 256 byte              256 bit, All Purpose Char Buffer
+typebuffer              = $380      ; 256 bytes             256 byte, All Purpose Char Buffer
 
+; END => $480
 
 
 ; Hardware Registers
@@ -65,3 +67,26 @@ ier                     = $bf8e     ; 8 bit
 
 keyboard_port           = $bd00     ; 8 bit                 Keyboard Scan-Row Input
 system_register         = $bc00     ; 8 bit                 System Register
+
+
+
+
+
+
+;-----------------------------------------------------------------------------------------------
+;                                        Memory Map
+;-----------------------------------------------------------------------------------------------
+; $00-$ff:              Mostly free Zero page, except for $00 and $01
+;-----------------------------------------------------------------------------------------------
+; $100-$1ff:            Stack
+;-----------------------------------------------------------------------------------------------
+; $200-$27f:            Kernel Variables
+;-----------------------------------------------------------------------------------------------
+; $280-$37f:            Kernel Stack
+;-----------------------------------------------------------------------------------------------
+; $380-$47f:            Typebuffer
+;-----------------------------------------------------------------------------------------------
+;
+;-----------------------------------------------------------------------------------------------
+;
+;-----------------------------------------------------------------------------------------------

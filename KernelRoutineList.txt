@@ -1,13 +1,18 @@
-Kernel Routines Grouped
-(everything NOT starting with "+-", are "wants")
-
+Kernel Routines Grouped by File
 
 
 Char.s
-
+  |
+  +- char_to_lower
+  +- char_to_upper
+  +- is_char
 
 Event_Handler.s
-
+  |
+  +- event_invoke
+  +- event_append
+  +- event_remove
+  +- event_count
 
 Hardware.s
   |
@@ -18,34 +23,44 @@ Hardware.s
 
 Int.s
 
-
 Irq.s
   |
   +- irq
+  +- irq_init
 
 Keyboard.s
-
+  |
+  +- keyboard_scan
+  +- keyboard_translate
+  +- keyboard_format
 
 Memory_Manager.s
+--- Still planing ---
 
   Software Stack:
   (for A, X and Y)
   push
   pop
 
+  reserve
+  dispose
+  grow
+  shrink
+
 
   Maybe also: External Fragmantation
   or: Variable houskeeping in a List of pointers
+--- Still planing ---
 
 String.s
-
-  to lower
-  to upper
-  count
-  flip
-  contains
-  equals
-  trim
+  |
+  +- string_to_lower
+  +- string_to_upper
+  +- string_count
+  +- string_flip
+  +- string_contains
+  +- string_equals
+  +- is_string
 
 Video.s
   |

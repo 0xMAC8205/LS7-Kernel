@@ -1,5 +1,5 @@
 
-vram_write
+vram_write:
             ; VRAM Write
             ; Writes A to the given Coordinate
             
@@ -14,7 +14,7 @@ vram_write
             rts
             
 
-vram_write_color
+vram_write_color:
             ; VRAM Write Color
             ; Writes A to the given Coordinate, but adds 0x40 to X
 
@@ -28,7 +28,7 @@ vram_write_color
 
             rts
 
-vram_read
+vram_read:
             ; VRAM Read
             ; Reads Data from the given Coordinate
 
@@ -42,7 +42,7 @@ vram_read
 
             rts
 
-vram_dump
+vram_dump:
             ; VRAM Dump
             ; Dumps all bytes from VRAM in the given Range
             ; to a specified Memory Adress

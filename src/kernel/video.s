@@ -1,5 +1,5 @@
 
-video_write
+video_write:
             ; Video Write (string)
             ; String will be written from a Pointer, 
             ; without a new line at the end
@@ -13,7 +13,7 @@ video_write
 
             rts
 
-video_write_static
+video_write_static:
             ; Video Write Static (string)
             ; String will be written wich follows after
             ; the JSR call without a new line at the end
@@ -24,7 +24,7 @@ video_write_static
 
             rts
 
-video_writeline
+video_writeline:
             ; Video Writeline (string)
             ; Same as "video_write", except at
             ; the end, a new line begins
@@ -38,7 +38,7 @@ video_writeline
 
             rts
 
-video_writeline_static
+video_writeline_static:
             ; Video Writeline Static (string)
             ; Same as "video_write_static", except at
             ; the end, a new line begins
@@ -49,7 +49,7 @@ video_writeline_static
 
             rts
 
-video_set_color
+video_set_color:
             ; Video Set Color
             ; Sets the color, of the content
             ; that will be written, following
@@ -62,7 +62,7 @@ video_set_color
 
             rts
 
-video_set_foreground
+video_set_foreground:
             ; Video Set Foreground
             ; Sets the Foreground color
 
@@ -74,7 +74,7 @@ video_set_foreground
 
             rts
 
-video_set_background
+video_set_background:
             ; Video Set Background
             ; Sets the Background color
             
@@ -86,7 +86,7 @@ video_set_background
 
             rts
 
-video_read_line
+video_read_line:
             ; Video Read Line
             ; Loops, till the Return key is pressed
             ; Output is stored in $300 => "Typebuffer"
@@ -97,7 +97,7 @@ video_read_line
 
             rts
 
-video_read_char
+video_read_char:
             ; Video Read Char
             ; Loops, till a Key is pressed
             
@@ -109,7 +109,7 @@ video_read_char
 
             rts
 
-video_set_cursor
+video_set_cursor:
             ; Video Set Cursor
             ; Sets the Cursor Location
 
@@ -122,7 +122,7 @@ video_set_cursor
 
             rts
 
-video_get_cursor
+video_get_cursor:
             ; Video Get Cursor
             ; Gets the Cursor Location
 
@@ -135,7 +135,7 @@ video_get_cursor
 
             rts
 
-video_return
+video_return:
             ; Video Return
             ; Sets the Cursor to it's line starting Position
             ; and if nessesary, scrolls it up and prints the Start Text
@@ -146,7 +146,7 @@ video_return
 
             rts
 
-video_scroll
+video_scroll:
             ; Video Scroll
             ; Scrolls the screen in the given direction
 
@@ -174,14 +174,14 @@ video_scroll
 
             rts
 
-video_clear
+video_clear:
             ; Video Clear
             ; Clears the Screen blank, with the normal Color
 
 
             rts
 
-video_reset_color
+video_reset_color:
             ; Video Reset Color
             ; Resets the Color to it's initial state
 
@@ -191,7 +191,7 @@ video_reset_color
 
             rts
 
-video_reset
+video_reset:
             ; Video Reset
             ; Resets the Video Display
             ; to it's initial state, i.e
@@ -203,7 +203,7 @@ video_reset
 
             rts
 
-video_load_font
+video_load_font:
             ; Video Load Font
             ; Loads a 2k BitMap font from a Pointer to VRAM
 
