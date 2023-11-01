@@ -10,6 +10,15 @@ vram_write:
 
             ; Output:  (none)
 
+                        ; Load Data into Registers
+            stx vidx    ; Sets Read Mode, load X Coord
+            sty vidy    ; load Y Coord
+            sta vidd    ; Set Write Mode, load Data
+            nop         ; Wait a bit...
+            nop
+            nop
+            nop
+            stx vidx    ; Sets Read Mode
 
             rts
             
@@ -25,6 +34,23 @@ vram_write_color:
             
             ; Output:  (none)
 
+            ; I'm deliberately NOT using Kernel Stack here,
+            ; for more speed and efficiency and because It's just one Byte
+
+            pha         ; Push A to Stack
+            txa         ; Transfer X to A for Math
+            adc #$40    ; Add #$40 (Color Range)
+            plx         ; Pop Stack to X
+
+                        ; Load Data into Registers
+            sta vidx    ; Sets Read Mode, load X Coord
+            sty vidy    ; load Y Coord
+            stx vidd    ; Set Write Mode, load Data
+            nop         ; Wait a bit...
+            nop
+            nop
+            nop
+            sta vidx    ; Sets Read Mode
 
             rts
 
@@ -39,6 +65,14 @@ vram_read:
             ; Output:
             ; A <= Data
 
+                        ; Load Data into Registers
+            stx vidx    ; Set to Read Mode, load X Coord
+            sty vidy    ; load Y Coords
+            nop         ; Wait a bit...
+            nop
+            nop
+            nop
+            lda vidd    ; Load Data
 
             rts
 

@@ -1,6 +1,12 @@
 Kernel Routines Grouped by File
 
 
+Byte.S
+  |
+  +- byte_flip
+  +- byte_swap
+  +- byte_drill
+
 Char.s
   |
   +- char_to_lower

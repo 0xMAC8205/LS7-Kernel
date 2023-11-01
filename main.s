@@ -19,7 +19,7 @@ reset:      sei
 
             lda #$E0
             sta vidm
-
+            
             lda #$60
             sta cursor_delay
             lda #$06
@@ -43,6 +43,9 @@ reset:      sei
             stz keyboard_previous
             stz system_register
             stz soft_system_register
+
+            jsr video_writeline_static
+            .string "Hello World"
 
 
             jsr kernel_init

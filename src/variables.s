@@ -21,7 +21,7 @@ k7                      = $20c      ; 8 bit
 
 keyboard_current        = $20d      ; 8 bit                 Held Keyboard Key, without Formatting (shift, etc.) "Scan Key"
 keyboard_previous       = $20e      ; 8 bit                 Previous held "Scan Key"
-keyboard_format         = $20f      ; 8 bit                 Formatted Char, from keyboard_current
+keyboard_ascii          = $20f      ; 8 bit                 Formatted Char, from keyboard_current as ASCII
 keyboard_arrow          = $210      ; 8 bit                 Held Arrow Keys
 keyboard_modifier       = $211      ; 8 bit                 Held Modifier Keys, such as "shift, alt, control"
 
@@ -41,11 +41,11 @@ soft_system_register    = $21d      ; 8 bit     (internal)
 color                   = $21e      ; 8 bit                 Fore & Background Color
 typelength              = $21f      ; 8 bit                 Length of typebuffer
 
-kernel_stack            = $280      ; 256 bytes             256 byte, Kernel Stack, used for offloading Registers
+kernel_stack            = $300      ; 256 bytes             256 byte, Kernel Stack, used for offloading Registers
 
-typebuffer              = $380      ; 256 bytes             256 byte, All Purpose Char Buffer
+typebuffer              = $400      ; 256 bytes             256 byte, All Purpose Char Buffer
 
-; END => $480
+; END => $500
 
 
 ; Hardware Registers
@@ -82,9 +82,9 @@ system_register         = $bc00     ; 8 bit                 System Register
 ;-----------------------------------------------------------------------------------------------
 ; $200-$27f:            Kernel Variables
 ;-----------------------------------------------------------------------------------------------
-; $280-$37f:            Kernel Stack
+; $300-$3ff:            Kernel Stack
 ;-----------------------------------------------------------------------------------------------
-; $380-$47f:            Typebuffer
+; $400-$4ff:            Typebuffer
 ;-----------------------------------------------------------------------------------------------
 ;
 ;-----------------------------------------------------------------------------------------------
