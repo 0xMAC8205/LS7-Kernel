@@ -1,6 +1,6 @@
 
-video_write:
-            ; Video Write (string)
+console_write:
+            ; console Write (string)
             ; String will be written from a Pointer, 
             ; without a new line at the end
 
@@ -17,32 +17,32 @@ video_write:
             ; x  => X Coords
             ; K0 => Y Coords
 
-video_write_loop:
+console_write_loop:
             lda (z0), y
             iny
             cmp #$00
-            beq video_write_return
+            beq console_write_return
             cpy #$00
-            beq video_write_return
+            beq console_write_return
 
             phy
 
             lda #$30
             cmp cursor_x
-            bcc video_write_skip_overflow
+            bcc console_write_skip_overflow
             stz cursor_x
             inc cursor_y
 
             lda #$20
             cmp cursor_y
-            bcc video_write_skip_overflow
+            bcc console_write_skip_overflow
 
             lda #$00
-            jsr video_scroll
+            jsr console_scroll
             lda #$1f
             sta cursor_y
 
-video_write_skip_overflow:
+console_write_skip_overflow:
             ldx cursor_x
             ldy cursor_y
             jsr vram_write
@@ -51,9 +51,9 @@ video_write_skip_overflow:
 
             inc cursor_x
             ply
-            jmp video_write_loop
+            jmp console_write_loop
 
-video_write_return:
+console_write_return:
             ; calc new address and put into xy
             lda z0
             ldx z1
@@ -63,8 +63,8 @@ video_write_return:
 
             rts
 
-video_write_static:
-            ; Video Write Static (string)
+console_write_static:
+            ; console Write Static (string)
             ; String will be written wich follows after
             ; the JSR call without a new line at the end
 
@@ -73,7 +73,7 @@ video_write_static:
 
             plx
             ply
-            jsr video_write
+            jsr console_write
 
             ; if return right
             phy
@@ -81,9 +81,9 @@ video_write_static:
 
             rts
 
-video_writeline:
-            ; Video Writeline (string)
-            ; Same as "video_write", except at
+console_writeline:
+            ; console Writeline (string)
+            ; Same as "console_write", except at
             ; the end, a new line begins
 
             ; Input:
@@ -92,14 +92,14 @@ video_writeline:
 
             ; Output: (none)
 
-            jsr video_write
-            jsr video_return ; or new video_newline
+            jsr console_write
+            jsr console_return ; or new console_newline
 
             rts
 
-video_writeline_static:
-            ; Video Writeline Static (string)
-            ; Same as "video_write_static", except at
+console_writeline_static:
+            ; console Writeline Static (string)
+            ; Same as "console_write_static", except at
             ; the end, a new line begins
 
             ; Input:  (none)
@@ -108,8 +108,8 @@ video_writeline_static:
 
             rts
 
-video_set_color:
-            ; Video Set Color
+console_set_color:
+            ; console Set Color
             ; Sets the color, of the content
             ; that will be written, following
 
@@ -121,8 +121,8 @@ video_set_color:
 
             rts
 
-video_set_foreground:
-            ; Video Set Foreground
+console_set_foreground:
+            ; console Set Foreground
             ; Sets the Foreground color
 
             ; Input:
@@ -133,8 +133,8 @@ video_set_foreground:
 
             rts
 
-video_set_background:
-            ; Video Set Background
+console_set_background:
+            ; console Set Background
             ; Sets the Background color
             
             ; Input:
@@ -145,8 +145,8 @@ video_set_background:
 
             rts
 
-video_read_line:
-            ; Video Read Line
+console_read_line:
+            ; console Read Line
             ; Loops, till the Return key is pressed
             ; Output is stored in $300 => "Typebuffer"
 
@@ -156,8 +156,8 @@ video_read_line:
 
             rts
 
-video_read_char:
-            ; Video Read Char
+console_read_char:
+            ; console Read Char
             ; Loops, till a Key is pressed
             
             ; Input:  (none)
@@ -168,8 +168,8 @@ video_read_char:
 
             rts
 
-video_set_cursor:
-            ; Video Set Cursor
+console_set_cursor:
+            ; console Set Cursor
             ; Sets the Cursor Location
 
             ; Input:
@@ -181,8 +181,8 @@ video_set_cursor:
 
             rts
 
-video_get_cursor:
-            ; Video Get Cursor
+console_get_cursor:
+            ; console Get Cursor
             ; Gets the Cursor Location
 
             ; Input:  (none)
@@ -194,8 +194,8 @@ video_get_cursor:
 
             rts
 
-video_return:
-            ; Video Return
+console_return:
+            ; console Return
             ; Sets the Cursor to it's line starting Position
             ; and if nessesary, scrolls it up and prints the Start Text
 
@@ -205,8 +205,8 @@ video_return:
 
             rts
 
-video_scroll:
-            ; Video Scroll
+console_scroll:
+            ; console Scroll
             ; Scrolls the screen in the given direction
 
             ; Input:
@@ -224,17 +224,17 @@ video_scroll:
             ;                |+---  0 = Dispose content & replace gap with Empty cells
             ;                |      1 = Wrap around
             ;                |
-            ;                +----  0 = Scroll Text Video Buffer   (Y 0 - 31)  (4k)
-            ;                       1 = Scroll Entire Video Buffer (Y 0 - 255) (32k)
+            ;                +----  0 = Scroll Text console Buffer   (Y 0 - 31)  (4k)
+            ;                       1 = Scroll Entire console Buffer (Y 0 - 255) (32k)
 
-            ; I.E => 0x03 (0b00001011) => Scrolls Entire Videobuffer Right & Up and 
+            ; I.E => 0x03 (0b00001011) => Scrolls Entire consolebuffer Right & Up and 
             ;           Disposes "scrolled away" content. Fills gaps with empty cells
 
 
             rts
 
-video_clear:
-            ; Video Clear
+console_clear:
+            ; console Clear
             ; Clears the Screen blank, with the normal Color and #$20 Chars
 
             ; Input:  (none)
@@ -243,7 +243,7 @@ video_clear:
             ldx #$00
             ldy #$00
 
-video_clear_loop:
+console_clear_loop:
             lda #$20
             jsr vram_write
             lda color
@@ -251,16 +251,16 @@ video_clear_loop:
 
             inx
             cpx #$30
-            bne video_clear_loop
+            bne console_clear_loop
             ldx #$00
             iny
             cpy #$00
-            bne video_clear_loop
+            bne console_clear_loop
 
             rts
 
-video_reset_color:
-            ; Video Reset Color
+console_reset_color:
+            ; console Reset Color
             ; Resets the Color to it's initial state
 
             ; Input:  (none)
@@ -269,9 +269,9 @@ video_reset_color:
 
             rts
 
-video_reset:
-            ; Video Reset
-            ; Resets the Video Display
+console_reset:
+            ; console Reset
+            ; Resets the console Display
             ; to it's initial state, i.e
             ; clears the screen, resets the Cursor etc...
 
@@ -281,8 +281,8 @@ video_reset:
 
             rts
 
-video_load_font:
-            ; Video Load Font
+console_load_font:
+            ; console Load Font
             ; Loads a 2k BitMap font from a Pointer to VRAM
 
             ; Input:
@@ -297,20 +297,20 @@ video_load_font:
             ldx #$78
             ldy #$00
 
-video_load_font_loop:
+console_load_font_loop:
             lda (z0)
             jsr vram_write
             inx
             inc z0
-            bne video_load_font_check
+            bne console_load_font_check
             inc z1
 
-video_load_font_check:
+console_load_font_check:
             cpx #$80
-            bne video_load_font_loop
+            bne console_load_font_loop
             ldx #$78
             iny
             cpy #$00
-            bne video_load_font_loop
+            bne console_load_font_loop
             
             rts

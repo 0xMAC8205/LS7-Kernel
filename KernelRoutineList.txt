@@ -70,22 +70,23 @@ String.s
   +- string_equals
   +- is_string
 
-Video.s
+console.s
   |
-  +- video_write
-  +- video_write_static
-  +- video_writeline
-  +- video_writeline_static
-  +- video_set_color
-  +- video_set_foreground
-  +- video_set_background
-  +- video_read_line
-  +- video_read_char
-  +- video_set_cursor
-  +- video_get_cursor
-  +- video_return
-  +- video_scroll
-  +- video_clear
-  +- video_reset_color
-  +- video_reset
-  +- video_load_font
+  +- console_write
+  +- console_write_static
+  +- console_writeline
+  +- console_writeline_static
+  +- console_set_color
+  +- console_set_foreground
+  +- console_set_background
+  +- console_read_line
+  +- console_read_char
+  +- console_set_cursor
+  +- console_get_cursor
+  +- console_return
+  +- console_scroll
+  +- console_clear
+  +- console_reset_color
+  +- console_reset
+  +- console_load_font
+  
