@@ -1,3 +1,11 @@
+; Important To-Do!
+; 
+; Get launch & tasks json working
+; fix Keyboard scanning
+; work on KernelRoutinesList.txt
+
+
+
             .include "src/variables.s"      
             
             
@@ -47,11 +55,11 @@ reset:      sei
             ;jsr video_writeline_static
             ;.string "Hello World"
 
-            jsr video_clear
+            jsr console_clear
 
             ldx #<charset
             ldy #>charset
-            jsr video_load_font
+            jsr console_load_font
 
             lda #$f0
             jsr irq_init

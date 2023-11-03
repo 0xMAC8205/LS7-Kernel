@@ -1,5 +1,12 @@
 Kernel Routines Grouped by File
 
+Maybes: {
+  - Virtual Sprites
+
+  May change Bit-Mapped to full Pixel mode
+  => 256x256 16 color mode
+}
+
 
 Byte.S
   |
@@ -26,6 +33,11 @@ Hardware.s
   +- vram_write_color
   +- vram_read
   +- vram_dump
+
+  beep
+  set_activity
+  set_user
+  scan_keyboard
 
 Int.s
   |
@@ -90,3 +102,25 @@ console.s
   +- console_reset
   +- console_load_font
   
+graphics.s
+  |
+  graphics_draw_rectangle
+  graphics_draw_line
+  graphics_draw_triangle
+  graphics_draw_polygon
+  graphics_draw_text
+
+  graphics_fill_rectangle
+  graphics_fill_triangle
+  graphics_fill_polygon
+
+  graphics_set_pixel
+
+video.s
+  |               ! Don't support 16 row mode! => Changes in future
+  video_clear
+  video_copy_memory
+  video_set_mode
+  video_get_mode
+  video_set_accent
+  video_get_accent

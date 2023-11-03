@@ -1,6 +1,6 @@
 
 console_write:
-            ; console Write (string)
+            ; Console Write (string)
             ; String will be written from a Pointer, 
             ; without a new line at the end
 
@@ -9,6 +9,13 @@ console_write:
             ; Y => HIGH Memory Pointer
 
             ; Output: (none)
+
+
+            ; ToDo:
+            ; Support for ASCII (0-32) Chars, Line feed etc.
+            ; Support for Color codes => Maybe #$ff Indicator
+            ; Return propper work addresses in X & Y
+            ;
 
             stx z0
             sty z1
@@ -64,7 +71,7 @@ console_write_return:
             rts
 
 console_write_static:
-            ; console Write Static (string)
+            ; Console Write Static (string)
             ; String will be written wich follows after
             ; the JSR call without a new line at the end
 
@@ -82,7 +89,7 @@ console_write_static:
             rts
 
 console_writeline:
-            ; console Writeline (string)
+            ; Console Writeline (string)
             ; Same as "console_write", except at
             ; the end, a new line begins
 
@@ -98,7 +105,7 @@ console_writeline:
             rts
 
 console_writeline_static:
-            ; console Writeline Static (string)
+            ; Console Writeline Static (string)
             ; Same as "console_write_static", except at
             ; the end, a new line begins
 
@@ -109,7 +116,7 @@ console_writeline_static:
             rts
 
 console_set_color:
-            ; console Set Color
+            ; Console Set Color
             ; Sets the color, of the content
             ; that will be written, following
 
@@ -122,7 +129,7 @@ console_set_color:
             rts
 
 console_set_foreground:
-            ; console Set Foreground
+            ; Console Set Foreground
             ; Sets the Foreground color
 
             ; Input:
@@ -134,7 +141,7 @@ console_set_foreground:
             rts
 
 console_set_background:
-            ; console Set Background
+            ; Console Set Background
             ; Sets the Background color
             
             ; Input:
@@ -146,7 +153,7 @@ console_set_background:
             rts
 
 console_read_line:
-            ; console Read Line
+            ; Console Read Line
             ; Loops, till the Return key is pressed
             ; Output is stored in $300 => "Typebuffer"
 
@@ -157,7 +164,7 @@ console_read_line:
             rts
 
 console_read_char:
-            ; console Read Char
+            ; Console Read Char
             ; Loops, till a Key is pressed
             
             ; Input:  (none)
@@ -169,7 +176,7 @@ console_read_char:
             rts
 
 console_set_cursor:
-            ; console Set Cursor
+            ; Console Set Cursor
             ; Sets the Cursor Location
 
             ; Input:
@@ -182,7 +189,7 @@ console_set_cursor:
             rts
 
 console_get_cursor:
-            ; console Get Cursor
+            ; Console Get Cursor
             ; Gets the Cursor Location
 
             ; Input:  (none)
@@ -195,7 +202,7 @@ console_get_cursor:
             rts
 
 console_return:
-            ; console Return
+            ; Console Return
             ; Sets the Cursor to it's line starting Position
             ; and if nessesary, scrolls it up and prints the Start Text
 
@@ -206,7 +213,7 @@ console_return:
             rts
 
 console_scroll:
-            ; console Scroll
+            ; Console Scroll
             ; Scrolls the screen in the given direction
 
             ; Input:
@@ -234,7 +241,7 @@ console_scroll:
             rts
 
 console_clear:
-            ; console Clear
+            ; Console Clear
             ; Clears the Screen blank, with the normal Color and #$20 Chars
 
             ; Input:  (none)
@@ -260,7 +267,7 @@ console_clear_loop:
             rts
 
 console_reset_color:
-            ; console Reset Color
+            ; Console Reset Color
             ; Resets the Color to it's initial state
 
             ; Input:  (none)
@@ -270,7 +277,7 @@ console_reset_color:
             rts
 
 console_reset:
-            ; console Reset
+            ; Console Reset
             ; Resets the console Display
             ; to it's initial state, i.e
             ; clears the screen, resets the Cursor etc...
@@ -282,7 +289,7 @@ console_reset:
             rts
 
 console_load_font:
-            ; console Load Font
+            ; Console Load Font
             ; Loads a 2k BitMap font from a Pointer to VRAM
 
             ; Input:
