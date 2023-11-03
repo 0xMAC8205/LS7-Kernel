@@ -8,13 +8,12 @@ irq_init:
 
             ; Output: (none)
 
-            sta t1ch
-            
-            lda #$40
-            sta acr
+            ldx #$40
+            stx acr
             stz t1cl
-            lda #$00
-            sta ier
+            sta t1ch
+            ldx #$c0
+            stx ier
             cli
 
             rts
@@ -35,11 +34,25 @@ irq:
             sty irq_y
 
 
+            jsr keyboard_scan
+            phx
+            phy
+
+            ldx #$11
+            ldy #$11
+            jsr vram_write
+
+            pla
+            inx
+            jsr vram_write
+
+            pla
+            inx
+            jsr vram_write
 
             bit t1cl    ; "Ping" VIA Timer, to trigger Restart
             lda irq_a   ; Restore A, X, Y and Processor Status
             ldx irq_x
             ldy irq_y
             plp
-
             rti

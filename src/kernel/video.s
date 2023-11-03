@@ -10,6 +10,56 @@ video_write:
 
             ; Output: (none)
 
+            stx z0
+            sty z1
+
+            ; y  => counter
+            ; x  => X Coords
+            ; K0 => Y Coords
+
+video_write_loop:
+            lda (z0), y
+            iny
+            cmp #$00
+            beq video_write_return
+            cpy #$00
+            beq video_write_return
+
+            phy
+
+            lda #$30
+            cmp cursor_x
+            bcc video_write_skip_overflow
+            stz cursor_x
+            inc cursor_y
+
+            lda #$20
+            cmp cursor_y
+            bcc video_write_skip_overflow
+
+            lda #$00
+            jsr video_scroll
+            lda #$1f
+            sta cursor_y
+
+video_write_skip_overflow:
+            ldx cursor_x
+            ldy cursor_y
+            jsr vram_write
+
+            ; cursor checking bla bla
+
+            inc cursor_x
+            ply
+            jmp video_write_loop
+
+video_write_return:
+            ; calc new address and put into xy
+            lda z0
+            ldx z1
+            jsr int16_add_byte
+
+            
 
             rts
 
@@ -21,6 +71,13 @@ video_write_static:
             ; Input:  (none)
             ; Output: (none)
 
+            plx
+            ply
+            jsr video_write
+
+            ; if return right
+            phy
+            phx
 
             rts
 
@@ -35,6 +92,8 @@ video_writeline:
 
             ; Output: (none)
 
+            jsr video_write
+            jsr video_return ; or new video_newline
 
             rts
 
@@ -176,8 +235,27 @@ video_scroll:
 
 video_clear:
             ; Video Clear
-            ; Clears the Screen blank, with the normal Color
+            ; Clears the Screen blank, with the normal Color and #$20 Chars
 
+            ; Input:  (none)
+            ; Output: (none)
+
+            ldx #$00
+            ldy #$00
+
+video_clear_loop:
+            lda #$20
+            jsr vram_write
+            lda color
+            jsr vram_write_color
+
+            inx
+            cpx #$30
+            bne video_clear_loop
+            ldx #$00
+            iny
+            cpy #$00
+            bne video_clear_loop
 
             rts
 
@@ -213,5 +291,26 @@ video_load_font:
 
             ; Output: (none)
 
+            stx z0
+            sty z1
 
+            ldx #$78
+            ldy #$00
+
+video_load_font_loop:
+            lda (z0)
+            jsr vram_write
+            inx
+            inc z0
+            bne video_load_font_check
+            inc z1
+
+video_load_font_check:
+            cpx #$80
+            bne video_load_font_loop
+            ldx #$78
+            iny
+            cpy #$00
+            bne video_load_font_loop
+            
             rts

@@ -6,8 +6,4 @@
             .include "src/kernel/event_handler.s"
             .include "src/kernel/memory_manager.s"
             .include "src/kernel/hardware.s"
-
-kernel_init:
-            rts 
-            
             

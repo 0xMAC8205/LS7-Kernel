@@ -34,11 +34,13 @@ vram_write_color:
             
             ; Output:  (none)
 
-            ; I'm deliberately NOT using Kernel Stack here,
-            ; for more speed and efficiency and because It's just one Byte
-
+            ; I'm deliberately NOT using the Kernel Stack here,
+            ; for more speed and efficiency and because it's just two Bytes ;)
+            
+            phx         ; Push X to Stack
             pha         ; Push A to Stack
             txa         ; Transfer X to A for Math
+            clc
             adc #$40    ; Add #$40 (Color Range)
             plx         ; Pop Stack to X
 
@@ -51,6 +53,8 @@ vram_write_color:
             nop
             nop
             sta vidx    ; Sets Read Mode
+            txa
+            plx
 
             rts
 

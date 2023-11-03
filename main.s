@@ -44,14 +44,38 @@ reset:      sei
             stz system_register
             stz soft_system_register
 
-            jsr video_writeline_static
-            .string "Hello World"
+            ;jsr video_writeline_static
+            ;.string "Hello World"
 
+            jsr video_clear
 
-            jsr kernel_init
+            ldx #<charset
+            ldy #>charset
+            jsr video_load_font
 
+            lda #$f0
+            jsr irq_init
 
-loop:       jmp loop
+            stz k0
+            lda #$00
+            tax
+            tay
+
+lp:
+            lda k0
+            jsr vram_write
+
+            inc k0
+            inx
+            cpx #$10
+            bne lp
+            ldx #$00
+            iny
+            cpy #$10
+            bne lp
+
+loop:       
+            jmp loop
 
 irq_jump:   jmp (irq_vector)
 
