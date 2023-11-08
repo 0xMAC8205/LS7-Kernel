@@ -4,6 +4,8 @@
 ; fix Keyboard scanning
 ; work on KernelRoutinesList.txt
 
+; The LS/7 Computer Rev. 1
+; Does not support the Graphics module !
 
 
             .include "src/variables.s"      

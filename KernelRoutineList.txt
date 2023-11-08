@@ -39,6 +39,9 @@ Hardware.s
   set_user_led
   scan_keyboard
 
+  expansion_set
+  expansion_get
+
 Int.s
   |
   +- int16_add_byte
