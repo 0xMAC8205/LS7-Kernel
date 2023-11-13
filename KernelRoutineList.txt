@@ -125,3 +125,13 @@ video.s
   +- video_get_mode
   +- video_set_accent
   +- video_get_accent
+
+
+
+filesystem.s
+
+serial.s
+
+sound.s
+
+
