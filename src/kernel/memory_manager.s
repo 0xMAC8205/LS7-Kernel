@@ -90,11 +90,13 @@ kernel_pull_x:
             ; X <= Pulled Data
 
             sty kernel_stack_offload_1
+            sta kernel_stack_offload_2
             ldy kernel_stack_counter
-            ldx (kernel_stack_pointer), y
+            lda (kernel_stack_pointer), y
+            tax
             dec kernel_stack_pointer
             ldy kernel_stack_offload_1
-
+            lda kernel_stack_offload_2
             rts
 
 

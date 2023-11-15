@@ -67,19 +67,13 @@ Memory_Manager.s
   +- kernel_pull_y
 
 --- Still planing ---
-
-  Software Stack:
-  (for A, X and Y)
-  push
-  pop
-
   reserve
   dispose
   grow
   shrink
 
 
-  Maybe also: External Fragmantation
+  External Fragmantation
   or: Variable houskeeping in a List of pointers
 --- Still planing ---
 
