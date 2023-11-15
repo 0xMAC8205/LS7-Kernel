@@ -7,48 +7,55 @@
 
 z0                      = $0        ; 8 bit                 All Purpose 16 bit Zero Page Variable
 z1                      = $1        ; 8 bit
+kernel_stack_pointer    = $fe       ; 16 bit                Pointer to the Kernel Stack
 
-irq_a                   = $200      ; 8 bit     (internal)  IRQ Variable Save
-irq_x                   = $201      ; 8 bit     (internal)
-irq_y                   = $202      ; 8 bit     (internal)
-irq_vector              = $203      ; 16 bit    (internal)  IRQ 16 bit Jump Vector 
+kernel_stack            = $200      ; 256 bytes             256 byte, Kernel Stack, used for offloading Registers
 
-k0                      = $205      ; 8 bit                 General Purpose Kernel Registers,
-k1                      = $206      ; 8 bit                 usually used as Carry for Sub-Routines
-k2                      = $207      ; 8 bit
-k3                      = $208      ; 8 bit
-k4                      = $209      ; 8 bit
-k5                      = $20a      ; 8 bit
-k6                      = $20b      ; 8 bit
-k7                      = $20c      ; 8 bit
+typebuffer              = $300      ; 256 bytes             256 byte, All Purpose Char Buffer
 
-keyboard_current        = $20d      ; 8 bit                 Held Keyboard Key, without Formatting (shift, etc.) "Scan Key"
-keyboard_previous       = $20e      ; 8 bit                 Previous held "Scan Key"
-keyboard_ascii          = $20f      ; 8 bit                 Formatted Char, from keyboard_current as ASCII
-keyboard_arrow          = $210      ; 8 bit                 Held Arrow Keys
-keyboard_modifier       = $211      ; 8 bit                 Held Modifier Keys, such as "shift, alt, control"
+irq_a                   = $400      ; 8 bit     (internal)  IRQ Variable Save
+irq_x                   = $401      ; 8 bit     (internal)
+irq_y                   = $402      ; 8 bit     (internal)
+irq_vector              = $403      ; 16 bit    (internal)  IRQ 16 bit Jump Vector 
 
-cursor_x                = $212      ; 8 bit                 Current Cursor X Position
-cursor_y                = $213      ; 8 bit                 Current Cursor Y Position
-cursor_x_previous       = $214      ; 8 bit     (internal)  Previous Cursor X Position
-cursor_y_previous       = $215      ; 8 bit     (internal)  Previous Cursor Y Position
-cursor_value            = $216      ; 8 bit                 
-cursor_speed            = $217      ; 8 bit                 Cursor Blink Speed (in IRQ Ticks)
-cursor_speed_count      = $218      ; 8 bit     (internal)  Cursor Blink Speed Counter
-cursor_delay_interval   = $219      ; 8 bit                 
-cursor_delay            = $21a      ; 8 bit
-cursor_delay_count      = $21b      ; 8 bit     (internal)
-cursor_delay_switch     = $21c      ; 8 bit     (internal)
+k0                      = $405      ; 8 bit                 General Purpose Kernel Registers,
+k1                      = $406      ; 8 bit                 usually used as Carry for Sub-Routines
+k2                      = $407      ; 8 bit
+k3                      = $408      ; 8 bit
+k4                      = $409      ; 8 bit
+k5                      = $40a      ; 8 bit
+k6                      = $40b      ; 8 bit
+k7                      = $40c      ; 8 bit
 
-soft_system_register    = $21d      ; 8 bit     (internal)
-color                   = $21e      ; 8 bit                 Fore & Background Color
-typelength              = $21f      ; 8 bit                 Length of typebuffer
+keyboard_current        = $40d      ; 8 bit                 Held Keyboard Key, without Formatting (shift, etc.) "Scan Key"
+keyboard_previous       = $40e      ; 8 bit                 Previous held "Scan Key"
+keyboard_ascii          = $40f      ; 8 bit                 Formatted Char, from keyboard_current as ASCII
+keyboard_arrow          = $410      ; 8 bit                 Held Arrow Keys
+keyboard_modifier       = $411      ; 8 bit                 Held Modifier Keys, such as "shift, alt, control"
 
-kernel_stack            = $300      ; 256 bytes             256 byte, Kernel Stack, used for offloading Registers
+cursor_x                = $412      ; 8 bit                 Current Cursor X Position
+cursor_y                = $413      ; 8 bit                 Current Cursor Y Position
+cursor_x_previous       = $414      ; 8 bit     (internal)  Previous Cursor X Position
+cursor_y_previous       = $415      ; 8 bit     (internal)  Previous Cursor Y Position
+cursor_value            = $416      ; 8 bit                 
+cursor_speed            = $417      ; 8 bit                 Cursor Blink Speed (in IRQ Ticks)
+cursor_speed_count      = $418      ; 8 bit     (internal)  Cursor Blink Speed Counter
+cursor_delay_interval   = $419      ; 8 bit                 
+cursor_delay            = $41a      ; 8 bit
+cursor_delay_count      = $41b      ; 8 bit     (internal)
+cursor_delay_switch     = $41c      ; 8 bit     (internal)
 
-typebuffer              = $400      ; 256 bytes             256 byte, All Purpose Char Buffer
+soft_system_register    = $41d      ; 8 bit     (internal)
+color                   = $41e      ; 8 bit                 Fore & Background Color
+typelength              = $41f      ; 8 bit                 Length of typebuffer
+
+kernel_stack_counter    = $420      ; 8 bit     (internal)  Length of Kernel Stack
+kernel_stack_offload_1  = $421      ; 8 bit     (internal)  General Kernel Stack Offload Variable
+kernel_stack_offload_2  = $422      ; 8 bit     (internal)  ..
 
 ; END => $500
+
+
 
 
 ; Hardware Registers

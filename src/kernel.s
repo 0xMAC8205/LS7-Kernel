@@ -9,3 +9,19 @@
             .include "src/kernel/memory_manager.s"
             .include "src/kernel/hardware.s"
             
+
+
+kernel_init:
+            ; Kernel Init
+            ; Initialises some Kernel parameters
+
+            ; Input  : (none)
+            ; Output : (none)
+
+            stz kernel_stack_counter
+            lda #<kernel_stack
+            sta kernel_stack_pointer
+            lda #>kernel_stack
+            sta kernel_stack_pointer + 1
+
+            rts

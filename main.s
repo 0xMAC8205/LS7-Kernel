@@ -54,6 +54,8 @@ reset:      sei
             stz system_register
             stz soft_system_register
 
+            jsr kernel_init
+
             ;jsr video_writeline_static
             ;.string "Hello World"
 

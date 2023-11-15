@@ -58,6 +58,14 @@ Keyboard.s
   +- keyboard_format
 
 Memory_Manager.s
+  |
+  +- kernel_push_a
+  +- kernel_push_x
+  +- kernel_push_y
+  +- kernel_pull_a
+  +- kernel_pull_x
+  +- kernel_pull_y
+
 --- Still planing ---
 
   Software Stack:

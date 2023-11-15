@@ -285,6 +285,11 @@ console_reset:
             ; Input:  (none)
             ; Output: (none)
 
+            jsr console_clear
+            
+            ldx #$00
+            ldy #$00
+            jsr console_set_cursor
 
             rts
 
