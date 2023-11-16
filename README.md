@@ -1,15 +1,13 @@
 # LS7-Kernel
 Kernel for the LS/7 Computer
 
-!! Still in Development !!
+**Not yet stable**
+
 
 # Building & Compiling
-Although, there already is a pre-compiled Binary "a.out",
-if you want to make and apply changes you have to compile the program
-yourself.
-
-The Compile and Upload scripts are contained in the Makefile
+Build and Upload scripts are contained in the main directory,
+or use the binder Makefile
 
 # Dependencies:
-* Compiler: vasm6502 (may switch to cc65)
+* Compiler: vasm6502_oldstyle (may switch to cc65)
 * Uploader: minipro
