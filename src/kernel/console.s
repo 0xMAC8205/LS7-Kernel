@@ -14,7 +14,7 @@ console_write:
             ; ToDo:
             ; Support for ASCII (0-32) Chars, Line feed etc.
             ; Support for Color codes => Maybe #$ff Indicator
-            ; Return propper work addresses in X & Y
+            ; Return propper work addresses in X & Y (for static support)
             ;
 
             stx z0

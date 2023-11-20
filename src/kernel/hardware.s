@@ -98,3 +98,89 @@ vram_dump:
 
             rts
 
+beep:
+            ; Beep
+            ; Beeps the main speaker
+
+            ; Input:
+            ; A => Beep Duration
+
+            ; Output: (none)
+
+            sta beep_counter
+
+            rts
+
+set_activity_led:
+            ; Set Activity LED
+            ; Sets the Activity LED Constant
+
+            ; Input:
+            ; A => State
+
+            ; Output: (none)
+
+            rts
+
+set_user_led:
+            ; Set User LED
+            ; Sets the User LED Constant
+
+            ; Input:
+            ; A => State
+
+            ; Output: (none)
+
+            rts
+
+set_activity_led_duration:
+            ; Set Activity LED Duration
+            ; Sets the Time (in Ticks),
+            ; where the Activity LED is HIGH
+
+            ; Input:
+            ; A => Duration
+
+            ; Output: (none)
+
+            rts
+
+set_user_led_duration:
+            ; Set User LED Duration
+            ; Sets the Time (in Ticks),
+            ; where the User LED is HIGH
+
+            ; Input:
+            ; A => Duration
+
+            ; Output: (none)
+
+            rts
+
+expansion_get:
+            ; Expansion Get
+            ; Gets Data from the Selected Expansion port,
+            ; at the given Port-Address
+
+            ; Input:
+            ; X => Port Number
+            ; Y => Port Address
+
+            ; Output:
+            ; A <= Read Data
+
+            rts
+
+expansion_set:
+            ; Expansion Set
+            ; Sets Data from the Selected Expansion port,
+            ; at the given Port-Address
+
+            ; Input:
+            ; A => Data
+            ; X => Port Number
+            ; Y => Port Address
+
+            ; Output: (none)
+
+            rts

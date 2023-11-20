@@ -33,14 +33,15 @@ Hardware.s
   +- vram_write_color
   +- vram_read
   +- vram_dump
+  +- beep
+  +- set_activity_led
+  +- set_activity_led_duration
+  +- set_user_led
+  +- set_user_led_duration
+  +- expansion_set
+  +- expansion_get
 
-  beep
-  set_activity_led
-  set_user_led
   scan_keyboard
-
-  expansion_set
-  expansion_get
 
 Int.s
   |

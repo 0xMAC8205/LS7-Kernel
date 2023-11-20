@@ -53,6 +53,14 @@ kernel_stack_counter    = $420      ; 8 bit     (internal)  Length of Kernel Sta
 kernel_stack_offload_1  = $421      ; 8 bit     (internal)  General Kernel Stack Offload Variable
 kernel_stack_offload_2  = $422      ; 8 bit     (internal)  ..
 
+beep_counter            = $423      ; 8 bit     (public)    Beeper counter in IRQ Ticks
+activity_led_counter    = $424      ; 8 bit     (public)    Activity LED Counter in IRQ Ticks 
+user_led_counter        = $425      ; 8 bit     (public)    User LED Counter in IRQ Ticks
+
+
+
+
+
 ; END => $500
 
 

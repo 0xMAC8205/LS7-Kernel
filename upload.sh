@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo -e "\nUploading..."
 
 bold=$(tput bold)

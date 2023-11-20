@@ -1,3 +1,5 @@
+#!/bin/bash
+
 echo "Compiling for 65c02"
 
 # Removing previous build
