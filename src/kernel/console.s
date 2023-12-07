@@ -17,6 +17,13 @@ console_write:
             ; Return propper work addresses in X & Y (for static support)
             ;
 
+            ; 00 = END of string
+            ; 0a = New Line
+            ; 08 = Backspace
+            ; 09 | 0b = Tab
+            ; 0d = x cursor origin
+            ; 
+
             stx z0
             sty z1
 
@@ -49,7 +56,7 @@ console_write_loop:
             lda #$1f
             sta cursor_y
 
-console_write_skip_overflow:
+console_write_skip_overflow:    
             ldx cursor_x
             ldy cursor_y
             jsr vram_write
