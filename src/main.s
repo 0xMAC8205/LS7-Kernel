@@ -1,5 +1,5 @@
 ; Important To-Do!
-; 
+;
 ; Get launch & tasks json working
 ; fix Keyboard scanning
 ; work on KernelRoutinesList.txt
@@ -8,15 +8,15 @@
 ; Does not support the Graphics module !
 
 
-            .include "src/variables.s"      
-            
-            
+            .include "src/variables.s"
+
+
             .org $c000                          ; $c000 for 16k ROM
             .include "src/kernel.s"
 
 
             .org $f700
-charset:    .incbin "assets/UTF-8.bin"
+charset:    .incbin "assets/font.bin"
 
             .org $ff00
 reset:      sei
@@ -29,7 +29,7 @@ reset:      sei
 
             lda #$E0
             sta vidm
-            
+
             lda #$60
             sta cursor_delay
             lda #$06
@@ -86,7 +86,8 @@ lp:
             cpy #$10
             bne lp
 
-loop:       
+loop:
+
             jmp loop
 
 irq_jump:   jmp (irq_vector)
